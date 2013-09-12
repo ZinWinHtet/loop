@@ -21,7 +21,7 @@
     else
         self.window.rootViewController = [self.window.rootViewController.storyboard instantiateViewControllerWithIdentifier:@"menuScreen"]; // else , show menu screen
     
-    [[UINavigationBar appearance] setTintColor:[UIColor redColor]];
+    [[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:0 green:112.0/255.0 blue:192.0/255.0 alpha:0]];
     return YES;
 }
 
