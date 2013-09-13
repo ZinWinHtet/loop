@@ -60,7 +60,6 @@
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     
     
-    
     [AFXMLRequestOperation addAcceptableContentTypes:[NSSet setWithObjects:@"application/xml", @"text/html", nil]];
     AFXMLRequestOperation *operation = [AFXMLRequestOperation XMLParserRequestOperationWithRequest: request
                                                                                            success:^(NSURLRequest *request, NSHTTPURLResponse *response, NSXMLParser *XMLParser)

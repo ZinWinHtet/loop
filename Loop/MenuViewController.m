@@ -8,6 +8,7 @@
 
 #import "MenuViewController.h"
 #import "AppDelegate.h"
+
 @interface MenuViewController ()
 {
     NSDictionary *student;
@@ -15,6 +16,13 @@
 @end
 
 @implementation MenuViewController
+
+- (IBAction)announcementClicked:(id)sender {
+//    if(sender.highlighted == YES){
+//        UIImage *img = [UIImage imageNamed:@"btn_announcement_over.png"];
+//        [self.btnAnnouncement setBackgroundImage:img forState:(nil)];
+//    }
+}
 
 -(void) announcementWork{
     
@@ -35,9 +43,25 @@
 }
 
 - (IBAction)MenuButtonAction:(id)sender {
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"" delegate:self cancelButtonTitle:@"Not now" destructiveButtonTitle:nil otherButtonTitles:@"Log Out", nil];
+    [actionSheet showInView:self.view];
+}
+
+-(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if(buttonIndex == 0){
+        [self logOut];
+    }
+    else if(buttonIndex == 1){
+        NSLog(@"Here is 1");
+    }
+    else if(buttonIndex == 2){
+        NSLog(@"Here is 2");
+    }
+}
+
+-(void) logOut{
     [[NSUserDefaults standardUserDefaults] setObject:@"No" forKey:@"logIn"];
     [[NSUserDefaults standardUserDefaults] synchronize];
-    
     AppDelegate *appDelegate = (AppDelegate*) [UIApplication sharedApplication].delegate;
     appDelegate.window.rootViewController = [appDelegate.window.rootViewController.storyboard instantiateViewControllerWithIdentifier:@"loginScreen"];
 }
